@@ -2,11 +2,12 @@ part of 'theme.dart';
 
 final lightTheme = ThemeData(
   brightness: Brightness.light,
-  fontFamily: 'Quicksand',
+  fontFamily: 'Roboto',
   primaryColor: AppColors.primaryColor,
   scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
   appBarTheme: const AppBarTheme(
-    color: AppColors.primaryColor,
+    backgroundColor: Colors.white,
+    foregroundColor: AppColors.primaryColor,
   ),
   colorScheme: ThemeData.light().colorScheme.copyWith(
         secondary: AppColors.colorSchemeSecondary,
