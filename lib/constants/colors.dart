@@ -2,11 +2,10 @@ import 'dart:ui';
 
 class AppColors {
   // region Light theme colors
-  static const Color primaryColor = Color(0xFFF47521);
-  static const Color scaffoldBackgroundColor = Color(0xFFF8F8F9);
+  static const Color primaryColor = Color(0xFF0F479D);
+  static const Color scaffoldBackgroundColor = Color(0xFFBCBCBC);
 
-  static const Color colorSchemeSecondary = Color(0xFF7C529D);
-
+  static const Color colorSchemeSecondary = Color(0xFFD10018);
   // endregion
 
   // region Dark theme colors
