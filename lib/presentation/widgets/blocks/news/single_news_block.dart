@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/utils/extensions/datetime.dart';
 
 import '../../../../data/models/news_provider/article.dart';
+import '../../../routes/routes.dart';
 
 class SingleNewsBlock extends StatelessWidget {
   final Article article;
@@ -12,71 +13,79 @@ class SingleNewsBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      article.title,
-                      maxLines: 2,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.watch_later_outlined,
-                          size: 16,
+      child: Material(
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context)
+                .pushNamed(Routes.newsDetail, arguments: article);
+          },
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          article.title,
+                          maxLines: 2,
                         ),
-                        const SizedBox(width: 8),
-                        Text(article.publishedAt.toStringWithTimeContext()),
-                      ],
-                    ),
-                  )
-                ],
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-              ),
-            ),
-            if (article.urlToImage != null)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: CachedNetworkImage(
-                    width: 100,
-                    height: 80,
-                    fit: BoxFit.cover,
-                    placeholder: (_, __) => const Image(
-                        width: 80,
-                        height: 80,
-                        fit: BoxFit.cover,
-                        image: AssetImage(
-                          'assets/placeholders/branded_placeholder.png',
-                        )),
-                    imageUrl: article.urlToImage!,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.watch_later_outlined,
+                              size: 16,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(article.publishedAt.toStringWithTimeContext()),
+                          ],
+                        ),
+                      )
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
                   ),
                 ),
-              )
-            else
-              Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
+                if (article.urlToImage != null)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        'assets/placeholders/branded_placeholder.png',
-                        fit: BoxFit.cover,
-                        height: 80,
+                      child: CachedNetworkImage(
                         width: 100,
-                      ))),
-          ],
+                        height: 80,
+                        fit: BoxFit.cover,
+                        placeholder: (_, __) => const Image(
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                              'assets/placeholders/branded_placeholder.png',
+                            )),
+                        imageUrl: article.urlToImage!,
+                      ),
+                    ),
+                  )
+                else
+                  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/placeholders/branded_placeholder.png',
+                            fit: BoxFit.cover,
+                            height: 80,
+                            width: 100,
+                          ))),
+              ],
+            ),
+          ),
         ),
       ),
     );
