@@ -129,7 +129,7 @@ class _$_Source implements _Source {
   @override
   final String name;
 
-  @overrideString
+  @override
   String toString() {
     return 'Source(id: $id, name: $name)';
   }
