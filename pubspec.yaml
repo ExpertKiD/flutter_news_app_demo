@@ -43,6 +43,8 @@ dependencies:
   dio: ^4.0.4
   # app configs
   flutter_dotenv: ^5.0.2
+  # string manipulations
+  recase: ^4.0.0
 
 
 
