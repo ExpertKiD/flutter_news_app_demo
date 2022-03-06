@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../data/models/news_provider/article.dart';
 import '../pages/home.dart';
 import '../pages/news_detail.dart';
 import '../routes/routes.dart';
@@ -12,7 +13,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomePage());
 
       case Routes.newsDetail:
-        return MaterialPageRoute(builder: (_) => const NewsDetailPage());
+        return MaterialPageRoute(
+            builder: (_) => NewsDetailPage(
+                  article: settings.arguments as Article,
+                ));
       default:
         return null;
     }
