@@ -17,10 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$NewsEventTearOff {
   const _$NewsEventTearOff();
 
-  NewsLoadStarted newsLoadStarted({NewsCategory? category}) {
-    return NewsLoadStarted(
-      category: category,
-    );
+  NewsLoadStarted newsLoadStarted() {
+    return NewsLoadStarted();
   }
 }
 
@@ -29,21 +27,19 @@ const $NewsEvent = _$NewsEventTearOff();
 
 /// @nodoc
 mixin _$NewsEvent {
-  NewsCategory? get category => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NewsCategory? category) newsLoadStarted,
+    required TResult Function() newsLoadStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(NewsCategory? category)? newsLoadStarted,
+    TResult Function()? newsLoadStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory? category)? newsLoadStarted,
+    TResult Function()? newsLoadStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,17 +59,12 @@ mixin _$NewsEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $NewsEventCopyWith<NewsEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NewsEventCopyWith<$Res> {
   factory $NewsEventCopyWith(NewsEvent value, $Res Function(NewsEvent) then) =
       _$NewsEventCopyWithImpl<$Res>;
-  $Res call({NewsCategory? category});
 }
 
 /// @nodoc
@@ -83,28 +74,13 @@ class _$NewsEventCopyWithImpl<$Res> implements $NewsEventCopyWith<$Res> {
   final NewsEvent _value;
   // ignore: unused_field
   final $Res Function(NewsEvent) _then;
-
-  @override
-  $Res call({
-    Object? category = freezed,
-  }) {
-    return _then(_value.copyWith(
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as NewsCategory?,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class $NewsLoadStartedCopyWith<$Res>
-    implements $NewsEventCopyWith<$Res> {
+abstract class $NewsLoadStartedCopyWith<$Res> {
   factory $NewsLoadStartedCopyWith(
           NewsLoadStarted value, $Res Function(NewsLoadStarted) then) =
       _$NewsLoadStartedCopyWithImpl<$Res>;
-  @override
-  $Res call({NewsCategory? category});
 }
 
 /// @nodoc
@@ -116,74 +92,51 @@ class _$NewsLoadStartedCopyWithImpl<$Res> extends _$NewsEventCopyWithImpl<$Res>
 
   @override
   NewsLoadStarted get _value => super._value as NewsLoadStarted;
-
-  @override
-  $Res call({
-    Object? category = freezed,
-  }) {
-    return _then(NewsLoadStarted(
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as NewsCategory?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$NewsLoadStarted implements NewsLoadStarted {
-  _$NewsLoadStarted({this.category});
-
-  @override
-  final NewsCategory? category;
+  _$NewsLoadStarted();
 
   @override
   String toString() {
-    return 'NewsEvent.newsLoadStarted(category: $category)';
+    return 'NewsEvent.newsLoadStarted()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is NewsLoadStarted &&
-            const DeepCollectionEquality().equals(other.category, category));
+        (other.runtimeType == runtimeType && other is NewsLoadStarted);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(category));
-
-  @JsonKey(ignore: true)
-  @override
-  $NewsLoadStartedCopyWith<NewsLoadStarted> get copyWith =>
-      _$NewsLoadStartedCopyWithImpl<NewsLoadStarted>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NewsCategory? category) newsLoadStarted,
+    required TResult Function() newsLoadStarted,
   }) {
-    return newsLoadStarted(category);
+    return newsLoadStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(NewsCategory? category)? newsLoadStarted,
+    TResult Function()? newsLoadStarted,
   }) {
-    return newsLoadStarted?.call(category);
+    return newsLoadStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NewsCategory? category)? newsLoadStarted,
+    TResult Function()? newsLoadStarted,
     required TResult orElse(),
   }) {
     if (newsLoadStarted != null) {
-      return newsLoadStarted(category);
+      return newsLoadStarted();
     }
     return orElse();
   }
@@ -218,12 +171,5 @@ class _$NewsLoadStarted implements NewsLoadStarted {
 }
 
 abstract class NewsLoadStarted implements NewsEvent {
-  factory NewsLoadStarted({NewsCategory? category}) = _$NewsLoadStarted;
-
-  @override
-  NewsCategory? get category;
-  @override
-  @JsonKey(ignore: true)
-  $NewsLoadStartedCopyWith<NewsLoadStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+  factory NewsLoadStarted() = _$NewsLoadStarted;
 }
