@@ -8,24 +8,28 @@ class FeaturedNewsLayoutWidget extends StatelessWidget {
   final List<Article> articles;
   final String title;
   final int maxVisibleArticles;
+  final bool showCategoryTitle;
+
   const FeaturedNewsLayoutWidget({
     Key? key,
     required this.articles,
     required this.title,
     this.maxVisibleArticles = 0,
+    this.showCategoryTitle = true,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text(title),
-          TextButton(
-            child: const Text('More'),
-            onPressed: () {},
-          ),
-        ]),
+        if (showCategoryTitle)
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Text(title),
+            TextButton(
+              child: const Text('More'),
+              onPressed: () {},
+            ),
+          ]),
         ListView.separated(
           itemBuilder: (context, index) {
             if (index == 0) {

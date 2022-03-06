@@ -4,17 +4,20 @@ class GenericNewsView<BlocA extends Bloc<NewsEvent, NewsState>>
     extends StatefulWidget {
   final int maxVisibleArticles;
   final String categoryTitle;
+  final bool showCategoryTitle;
 
   const GenericNewsView({
     Key? key,
     required this.maxVisibleArticles,
     required this.categoryTitle,
+    this.showCategoryTitle = true,
   }) : super(key: key);
 
   @override
   State<GenericNewsView> createState() => _GenericNewsViewState<BlocA>(
         maxVisibleArticles: maxVisibleArticles,
         categoryTitle: categoryTitle,
+        showCategoryTitle: showCategoryTitle,
       );
 }
 
@@ -22,10 +25,12 @@ class _GenericNewsViewState<BlocA extends Bloc<NewsEvent, NewsState>>
     extends State<GenericNewsView> {
   final int maxVisibleArticles;
   final String categoryTitle;
+  final bool showCategoryTitle;
 
   _GenericNewsViewState({
     required this.maxVisibleArticles,
     required this.categoryTitle,
+    required this.showCategoryTitle,
   });
 
   @override
