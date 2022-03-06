@@ -66,12 +66,16 @@ class SingleNewsBlock extends StatelessWidget {
                 ),
               )
             else
-              Image.asset(
-                'assets/placeholders/branded_placeholder.png',
-                fit: BoxFit.cover,
-                height: 80,
-                width: 80,
-              )
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        'assets/placeholders/branded_placeholder.png',
+                        fit: BoxFit.cover,
+                        height: 80,
+                        width: 100,
+                      ))),
           ],
         ),
       ),
