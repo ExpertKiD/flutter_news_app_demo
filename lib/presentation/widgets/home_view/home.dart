@@ -9,7 +9,13 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Drawer(),
-      appBar: AppBar(
+      appBar: _appBar(context),
+      backgroundColor: AppColors.scaffoldBackgroundColor,
+      body: Container(),
+    );
+  }
+
+  AppBar _appBar(BuildContext context) => AppBar(
         leading: Builder(builder: (buildContext) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -38,9 +44,5 @@ class HomeView extends StatelessWidget {
         title: const Image(
             height: 32,
             image: AssetImage('assets/logos/icon_with_brand_name.png')),
-      ),
-      backgroundColor: AppColors.scaffoldBackgroundColor,
-      body: Container(),
-    );
-  }
+      );
 }
