@@ -7,7 +7,7 @@ class AppColors {
 
   static const Color colorSchemeSecondary = Color(0xFFD10018);
 
-  static const Color placeholderColor = Color(0xFF808080);
+  static const Color placeholderColor = Color(0xFFDCDCDC);
   // endregion
 
   // region Dark theme colors
