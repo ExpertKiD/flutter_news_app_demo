@@ -48,7 +48,7 @@ class _GenericNewsViewState<BlocA extends Bloc<NewsEvent, NewsState>>
     return BlocBuilder<BlocA, NewsState>(
       builder: (context, state) {
         if (state is NewsInitial || state is NewsLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const FeaturedNewsLayoutPlaceholder();
         } else if (state is NewsLoadSuccess) {
           return FeaturedNewsLayoutWidget(
             articles: state.news.articles,

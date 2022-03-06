@@ -11,6 +11,7 @@ import 'package:news_app/business_logic/blocs/news/technology_news_bloc.dart';
 import 'package:news_app/business_logic/events/news_event/news_event.dart';
 import 'package:news_app/business_logic/states/news_state/news_state.dart';
 import 'package:news_app/data/enums/news_category.dart';
+import 'package:news_app/presentation/placeholders/featured_news_layout.dart';
 import 'package:news_app/presentation/widgets/news_layouts/featured_news_layout.dart';
 import 'package:news_app/utils/extensions/news_category.dart';
 import 'package:recase/recase.dart';
