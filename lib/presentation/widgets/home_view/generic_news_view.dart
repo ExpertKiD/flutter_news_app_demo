@@ -31,7 +31,11 @@ class _GenericNewsViewState<BlocA extends Bloc<NewsEvent, NewsState>>
   @override
   void initState() {
     super.initState();
-    context.read<BlocA>().add(NewsEvent.newsLoadStarted());
+
+    if (context.read<BlocA>().state is NewsInitial ||
+        context.read<BlocA>().state is NewsLoadFailure) {
+      context.read<BlocA>().add(NewsEvent.newsLoadStarted());
+    }
   }
 
   @override
@@ -43,7 +47,7 @@ class _GenericNewsViewState<BlocA extends Bloc<NewsEvent, NewsState>>
         } else if (state is NewsLoadSuccess) {
           return FeaturedNewsLayoutWidget(
             articles: state.news.articles,
-            title: categoryTitle,
+            title: ReCase(categoryTitle).sentenceCase,
             maxVisibleArticles: maxVisibleArticles,
           );
         } else {
