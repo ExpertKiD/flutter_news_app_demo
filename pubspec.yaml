@@ -71,6 +71,7 @@ flutter:
 
   assets:
     - assets/logos/
+    - assets/placeholders/
     - .env
 
 
