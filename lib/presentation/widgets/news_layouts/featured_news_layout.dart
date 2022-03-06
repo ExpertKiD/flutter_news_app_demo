@@ -3,6 +3,7 @@ import 'package:news_app/presentation/widgets/blocks/news/featured_block.dart';
 import 'package:news_app/presentation/widgets/blocks/news/single_news_block.dart';
 
 import '../../../data/models/news_provider/article.dart';
+import '../../routes/routes.dart';
 
 class FeaturedNewsLayoutWidget extends StatelessWidget {
   final List<Article> articles;
@@ -27,7 +28,10 @@ class FeaturedNewsLayoutWidget extends StatelessWidget {
             Text(title),
             TextButton(
               child: const Text('More'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed(Routes.newsListDetail, arguments: articles);
+              },
             ),
           ]),
         ListView.separated(
