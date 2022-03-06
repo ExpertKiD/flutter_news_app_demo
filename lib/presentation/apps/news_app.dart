@@ -80,6 +80,7 @@ class NewsApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: ThemeMode.light,
