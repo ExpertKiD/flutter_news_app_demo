@@ -21,18 +21,7 @@ class NewsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: _providers(),
-      child: MaterialApp(
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: ThemeMode.light,
-        title: 'Naya Khabar',
-        onGenerateRoute: AppRouter.onGenerateRoute,
-      ),
-    );
-  }
-
-  List<BlocProvider> _providers() => [
+      providers: [
         BlocProvider(
           create: (context) => MainHeadlineNewsBloc(
             newsRepository: NewsRepository(
@@ -89,5 +78,14 @@ class NewsApp extends StatelessWidget {
             ),
           ),
         ),
-      ];
+      ],
+      child: MaterialApp(
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: ThemeMode.light,
+        title: 'Naya Khabar',
+        onGenerateRoute: AppRouter.onGenerateRoute,
+      ),
+    );
+  }
 }
