@@ -33,7 +33,7 @@ class HomeView extends StatelessWidget {
       backgroundColor: AppColors.scaffoldBackgroundColor,
       body: ListView(
         children: [
-          GenericNewsView<MainHeadlineNewsBloc>(
+          const GenericNewsView<MainHeadlineNewsBloc>(
             maxVisibleArticles: 6,
             categoryTitle: 'Main news',
           ),
