@@ -3,4 +3,5 @@ class Routes {
 
   static const String home = '/';
   static const String newsDetail = '/newsDetail';
+  static const String newsListDetail = '/newsListDetail';
 }
