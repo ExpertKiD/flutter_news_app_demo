@@ -6,6 +6,8 @@ class AppColors {
   static const Color scaffoldBackgroundColor = Color(0xFFBCBCBC);
 
   static const Color colorSchemeSecondary = Color(0xFFD10018);
+
+  static const Color placeholderColor = Color(0xFF808080);
   // endregion
 
   // region Dark theme colors
