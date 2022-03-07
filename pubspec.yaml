@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   # Bloc
   flutter_bloc: ^8.0.1
+  hydrated_bloc: ^8.0.0
   # Freezed
   freezed_annotation: ^1.1.0
   json_annotation: ^4.4.0
@@ -41,12 +42,14 @@ dependencies:
   cached_network_image: ^3.2.0
   # dio
   dio: ^4.0.4
+  dio_cache_interceptor: ^3.2.6
+  dio_cache_interceptor_hive_store: ^3.1.1
   # app configs
   flutter_dotenv: ^5.0.2
   # string manipulations
   recase: ^4.0.0
-
-
+  # path provider
+  path_provider: ^2.0.9
 
 dev_dependencies:
   flutter_test:
