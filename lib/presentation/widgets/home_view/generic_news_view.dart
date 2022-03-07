@@ -56,8 +56,32 @@ class _GenericNewsViewState<BlocA extends Bloc<NewsEvent, NewsState>>
             maxVisibleArticles: maxVisibleArticles,
           );
         } else {
-          return const SizedBox(
-            height: 0,
+          return Container(
+            color: AppColors.scaffoldBackgroundColor,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height - 48,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      'assets/placeholders/branded_placeholder.png',
+                      width: 300,
+                      height: 200,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Unable to connect to the server. Please pull down to refresh.',
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
           );
         }
       },
