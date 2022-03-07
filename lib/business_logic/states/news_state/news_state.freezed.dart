@@ -13,6 +13,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+NewsState _$NewsStateFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'initial':
+      return NewsInitial.fromJson(json);
+    case 'loading':
+      return NewsLoading.fromJson(json);
+    case 'loadSuccess':
+      return NewsLoadSuccess.fromJson(json);
+    case 'loadFailure':
+      return NewsLoadFailure.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'NewsState',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 class _$NewsStateTearOff {
   const _$NewsStateTearOff();
@@ -33,6 +50,10 @@ class _$NewsStateTearOff {
 
   NewsLoadFailure loadFailure() {
     return NewsLoadFailure();
+  }
+
+  NewsState fromJson(Map<String, Object?> json) {
+    return NewsState.fromJson(json);
   }
 }
 
@@ -91,6 +112,7 @@ mixin _$NewsState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -127,9 +149,15 @@ class _$NewsInitialCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$NewsInitial implements NewsInitial {
-  _$NewsInitial();
+  _$NewsInitial({String? $type}) : $type = $type ?? 'initial';
+
+  factory _$NewsInitial.fromJson(Map<String, dynamic> json) =>
+      _$$NewsInitialFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -218,10 +246,18 @@ class _$NewsInitial implements NewsInitial {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NewsInitialToJson(this);
+  }
 }
 
 abstract class NewsInitial implements NewsState {
   factory NewsInitial() = _$NewsInitial;
+
+  factory NewsInitial.fromJson(Map<String, dynamic> json) =
+      _$NewsInitial.fromJson;
 }
 
 /// @nodoc
@@ -243,9 +279,15 @@ class _$NewsLoadingCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$NewsLoading implements NewsLoading {
-  _$NewsLoading();
+  _$NewsLoading({String? $type}) : $type = $type ?? 'loading';
+
+  factory _$NewsLoading.fromJson(Map<String, dynamic> json) =>
+      _$$NewsLoadingFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -334,10 +376,18 @@ class _$NewsLoading implements NewsLoading {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NewsLoadingToJson(this);
+  }
 }
 
 abstract class NewsLoading implements NewsState {
   factory NewsLoading() = _$NewsLoading;
+
+  factory NewsLoading.fromJson(Map<String, dynamic> json) =
+      _$NewsLoading.fromJson;
 }
 
 /// @nodoc
@@ -381,12 +431,19 @@ class _$NewsLoadSuccessCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$NewsLoadSuccess implements NewsLoadSuccess {
-  _$NewsLoadSuccess({required this.news});
+  _$NewsLoadSuccess({required this.news, String? $type})
+      : $type = $type ?? 'loadSuccess';
+
+  factory _$NewsLoadSuccess.fromJson(Map<String, dynamic> json) =>
+      _$$NewsLoadSuccessFromJson(json);
 
   @override
   final News news;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -483,10 +540,18 @@ class _$NewsLoadSuccess implements NewsLoadSuccess {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NewsLoadSuccessToJson(this);
+  }
 }
 
 abstract class NewsLoadSuccess implements NewsState {
   factory NewsLoadSuccess({required News news}) = _$NewsLoadSuccess;
+
+  factory NewsLoadSuccess.fromJson(Map<String, dynamic> json) =
+      _$NewsLoadSuccess.fromJson;
 
   News get news;
   @JsonKey(ignore: true)
@@ -513,9 +578,15 @@ class _$NewsLoadFailureCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$NewsLoadFailure implements NewsLoadFailure {
-  _$NewsLoadFailure();
+  _$NewsLoadFailure({String? $type}) : $type = $type ?? 'loadFailure';
+
+  factory _$NewsLoadFailure.fromJson(Map<String, dynamic> json) =>
+      _$$NewsLoadFailureFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -604,8 +675,16 @@ class _$NewsLoadFailure implements NewsLoadFailure {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NewsLoadFailureToJson(this);
+  }
 }
 
 abstract class NewsLoadFailure implements NewsState {
   factory NewsLoadFailure() = _$NewsLoadFailure;
+
+  factory NewsLoadFailure.fromJson(Map<String, dynamic> json) =
+      _$NewsLoadFailure.fromJson;
 }
