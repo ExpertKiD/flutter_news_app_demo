@@ -18,6 +18,7 @@ import 'package:recase/recase.dart';
 
 import '../../../business_logic/states/news_state/news_state.dart';
 import '../../../constants/colors.dart';
+import '../../routes/routes.dart';
 
 part 'generic_news_view.dart';
 part 'top_headlines_view.dart';
@@ -28,7 +29,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: SafeArea(
+        child: _drawer(context),
+      ),
       appBar: _appBar(context),
       backgroundColor: AppColors.scaffoldBackgroundColor,
       body: RefreshIndicator(
@@ -76,7 +79,7 @@ class HomeView extends StatelessWidget {
             ),
             GenericNewsView<TechnologyNewsBloc>(
               maxVisibleArticles: 6,
-              categoryTitle: NewsCategory.sports.value,
+              categoryTitle: NewsCategory.technology.value,
             ),
           ],
           scrollDirection: Axis.vertical,
@@ -116,4 +119,110 @@ class HomeView extends StatelessWidget {
             height: 32,
             image: AssetImage('assets/logos/icon_with_brand_name.png')),
       );
+
+  Drawer _drawer(BuildContext context) {
+    NewsState mainHeadlinesNewsBlocState =
+        context.watch<MainHeadlineNewsBloc>().state;
+    NewsState businessNewsBlocState = context.watch<BusinessNewsBloc>().state;
+    NewsState entertainmentNewsBlocState =
+        context.watch<EntertainmentNewsBloc>().state;
+    NewsState generalNewsBlocState = context.watch<GeneralNewsBloc>().state;
+    NewsState healthNewsBlocState = context.watch<HealthNewsBloc>().state;
+    NewsState scienceNewsBlocState = context.watch<ScienceNewsBloc>().state;
+    NewsState sportsNewsBlocState = context.watch<SportsNewsBloc>().state;
+    NewsState technologyNewsBlocState =
+        context.watch<TechnologyNewsBloc>().state;
+
+    return Drawer(
+      child: ListView(
+        children: [
+          const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+              child: Image(
+                height: 32,
+                image: AssetImage('assets/logos/icon_with_brand_name.png'),
+              )),
+          if (mainHeadlinesNewsBlocState is NewsLoadSuccess)
+            ListTile(
+                title: const Text('Main News'),
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    Routes.newsListDetail,
+                    arguments: mainHeadlinesNewsBlocState.news.articles,
+                  );
+                }),
+          if (businessNewsBlocState is NewsLoadSuccess)
+            ListTile(
+                title: Text(ReCase(NewsCategory.business.value).sentenceCase),
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    Routes.newsListDetail,
+                    arguments: businessNewsBlocState.news.articles,
+                  );
+                }),
+          if (entertainmentNewsBlocState is NewsLoadSuccess)
+            ListTile(
+              title:
+                  Text(ReCase(NewsCategory.entertainment.value).sentenceCase),
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  Routes.newsListDetail,
+                  arguments: entertainmentNewsBlocState.news.articles,
+                );
+              },
+            ),
+          if (generalNewsBlocState is NewsLoadSuccess)
+            ListTile(
+              title: Text(ReCase(NewsCategory.general.value).sentenceCase),
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  Routes.newsListDetail,
+                  arguments: generalNewsBlocState.news.articles,
+                );
+              },
+            ),
+          if (healthNewsBlocState is NewsLoadSuccess)
+            ListTile(
+              title: Text(ReCase(NewsCategory.health.value).sentenceCase),
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  Routes.newsListDetail,
+                  arguments: healthNewsBlocState.news.articles,
+                );
+              },
+            ),
+          if (scienceNewsBlocState is NewsLoadSuccess)
+            ListTile(
+              title: Text(ReCase(NewsCategory.science.value).sentenceCase),
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  Routes.newsListDetail,
+                  arguments: scienceNewsBlocState.news.articles,
+                );
+              },
+            ),
+          if (sportsNewsBlocState is NewsLoadSuccess)
+            ListTile(
+              title: Text(ReCase(NewsCategory.sports.value).sentenceCase),
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  Routes.newsListDetail,
+                  arguments: sportsNewsBlocState.news.articles,
+                );
+              },
+            ),
+          if (technologyNewsBlocState is NewsLoadSuccess)
+            ListTile(
+              title: Text(ReCase(NewsCategory.technology.value).sentenceCase),
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  Routes.newsListDetail,
+                  arguments: technologyNewsBlocState.news.articles,
+                );
+              },
+            ),
+        ],
+      ),
+    );
+  }
 }
