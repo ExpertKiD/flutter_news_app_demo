@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/utils/extensions/datetime.dart';
 
 import '../../../../data/models/news_provider/article.dart';
 import '../../../routes/routes.dart';
@@ -40,9 +41,29 @@ class FeaturedBlock extends StatelessWidget {
                   height: 200,
                   width: MediaQuery.of(context).size.width,
                 ),
-              Container(
-                child: Text(article.title),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  article.title,
+                  style: Theme.of(context).textTheme.displayMedium,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
               ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 16.0, bottom: 8, right: 16),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.watch_later_outlined,
+                      size: 16,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(article.publishedAt.toStringWithTimeContext()),
+                  ],
+                ),
+              )
             ],
           ),
         ),
