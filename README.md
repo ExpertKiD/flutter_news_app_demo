@@ -6,23 +6,12 @@ A Flutter news app demo for New IT Venture Company.
 ## Screenshots
 ___
 
-<style>
-    .row {
-  display: flex;
-}
 
-.column {
-  flex: 25%;
-  padding: 8px;
-}
-</style>
+<img src='./screenshots/placeholder.jpg' alt='Placeholder image' 
+width=225 height=500 style="margin-right: 5px"><img src='./screenshots/home_view_news_loaded.jpg' alt='Home view news load success' width=225 height=500 style="margin-right: 5px">
+<img src='./screenshots/home_view_news_failed.jpg' alt='Placeholder image' width=225 height=500 style="margin-right: 5px">
+<img src='./screenshots/news_detail_view.jpg' alt='Home view news load failure' width=225 height=500 style="margin-right: 5px" >
 
-<div class="row">
-<img src='./screenshots/placeholder.jpg' alt='Placeholder image' >
-<img src='./screenshots/home_view_news_loaded.jpg' alt='Home view news load success' >
-<img src='./screenshots/home_view_news_failed.jpg' alt='Placeholder image' >
-<img src='./screenshots/news_detail_view.jpg' alt='Home view news load failure' >
-</div>
 
 ## 1. Getting Started
 ___
