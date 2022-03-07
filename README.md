@@ -27,8 +27,8 @@ There are multiple ways of doing the project in terms of state management, state
 1. Design for the app is cloned from [Online Khabar](https://play.google.com/store/apps/details?id=com.shirantech.onlinekhabar&hl=ne&gl=US) mobile application.
 2. State management is done using BLoC.
 3. HTTP client is used from Dio package for easier caching,
-4. State persistence is ignored for the time being due to time constraints though HydratedBLoC could be easily used.
-5. API queries are not cached for the initial MVP. However, future release can use dio interceptors for easier caching.
+4. ~~State persistence is ignored for the time being due to time constraints though HydratedBloc could be easily used.~~ State is now persisted using `HydratedBloc`.
+5. ~~API queries are not cached for the initial MVP. However, future release can use dio interceptors for easier caching.~~ Dio's GET requests are forcefully cached for 1 hour using Hive except for 401 and 403 requests.
 6. Unit tests, widget tests and integration tests all are ignored due to time constraints.
 ## 3. Initial Setup
 ___
