@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:news_app/data/enums/news_category.dart';
 import 'package:news_app/data/repositories/news.dart';
@@ -24,7 +23,7 @@ class EntertainmentNewsBloc extends HydratedBloc<NewsEvent, NewsState> {
           await newsRepository.getNews(category: NewsCategory.entertainment);
 
       emit(NewsState.loadSuccess(news: news));
-    } catch (error, stacktrace) {
+    } catch (error) {
       emit(NewsState.loadFailure());
     }
   }

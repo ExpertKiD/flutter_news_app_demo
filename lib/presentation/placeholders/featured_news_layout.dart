@@ -71,7 +71,7 @@ class FeaturedNewsLayoutPlaceholder extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         ...List.generate(
             6,
             (_) => Column(
@@ -125,7 +125,7 @@ class FeaturedNewsLayoutPlaceholder extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                   ],
                 )),
       ],

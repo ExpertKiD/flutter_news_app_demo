@@ -47,10 +47,10 @@ class NewsDetailView extends StatelessWidget {
               ),
             ),
           ),
-          Divider(color: Colors.white),
+          const Divider(color: Colors.white),
           Container(
             padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
             ),
             child: Text('${article.content}\n\n' * 5),
