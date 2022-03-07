@@ -23,8 +23,52 @@ import '../../routes/routes.dart';
 part 'generic_news_view.dart';
 part 'top_headlines_view.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    super.initState();
+
+    // Start the News load start event
+    if (context.read<MainHeadlineNewsBloc>().state is NewsInitial ||
+        context.read<MainHeadlineNewsBloc>().state is NewsLoadFailure) {
+      context.read<MainHeadlineNewsBloc>().add(NewsEvent.newsLoadStarted());
+    }
+    if (context.read<BusinessNewsBloc>().state is NewsInitial ||
+        context.read<BusinessNewsBloc>().state is NewsLoadFailure) {
+      context.read<BusinessNewsBloc>().add(NewsEvent.newsLoadStarted());
+    }
+    if (context.read<EntertainmentNewsBloc>().state is NewsInitial ||
+        context.read<EntertainmentNewsBloc>().state is NewsLoadFailure) {
+      context.read<EntertainmentNewsBloc>().add(NewsEvent.newsLoadStarted());
+    }
+    if (context.read<GeneralNewsBloc>().state is NewsInitial ||
+        context.read<GeneralNewsBloc>().state is NewsLoadFailure) {
+      context.read<GeneralNewsBloc>().add(NewsEvent.newsLoadStarted());
+    }
+    if (context.read<HealthNewsBloc>().state is NewsInitial ||
+        context.read<HealthNewsBloc>().state is NewsLoadFailure) {
+      context.read<HealthNewsBloc>().add(NewsEvent.newsLoadStarted());
+    }
+    if (context.read<ScienceNewsBloc>().state is NewsInitial ||
+        context.read<ScienceNewsBloc>().state is NewsLoadFailure) {
+      context.read<ScienceNewsBloc>().add(NewsEvent.newsLoadStarted());
+    }
+    if (context.read<SportsNewsBloc>().state is NewsInitial ||
+        context.read<SportsNewsBloc>().state is NewsLoadFailure) {
+      context.read<SportsNewsBloc>().add(NewsEvent.newsLoadStarted());
+    }
+    if (context.read<TechnologyNewsBloc>().state is NewsInitial ||
+        context.read<TechnologyNewsBloc>().state is NewsLoadFailure) {
+      context.read<TechnologyNewsBloc>().add(NewsEvent.newsLoadStarted());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
