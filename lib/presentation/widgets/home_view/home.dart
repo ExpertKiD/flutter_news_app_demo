@@ -31,47 +31,57 @@ class HomeView extends StatelessWidget {
       drawer: const Drawer(),
       appBar: _appBar(context),
       backgroundColor: AppColors.scaffoldBackgroundColor,
-      body: ListView(
-        children: [
-          const GenericNewsView<MainHeadlineNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: 'Main news',
-          ),
-          GenericNewsView<BusinessNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: NewsCategory.business.value,
-          ),
-          GenericNewsView<EntertainmentNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: NewsCategory.entertainment.value,
-          ),
-          GenericNewsView<GeneralNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: NewsCategory.general.value,
-          ),
-          GenericNewsView<HealthNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: NewsCategory.health.value,
-          ),
-          GenericNewsView<HealthNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: NewsCategory.health.value,
-          ),
-          GenericNewsView<ScienceNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: NewsCategory.science.value,
-          ),
-          GenericNewsView<SportsNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: NewsCategory.sports.value,
-          ),
-          GenericNewsView<TechnologyNewsBloc>(
-            maxVisibleArticles: 6,
-            categoryTitle: NewsCategory.sports.value,
-          ),
-        ],
-        scrollDirection: Axis.vertical,
-        physics: const AlwaysScrollableScrollPhysics(),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          context.read<MainHeadlineNewsBloc>().add(NewsEvent.newsLoadStarted());
+          context.read<BusinessNewsBloc>().add(NewsEvent.newsLoadStarted());
+          context
+              .read<EntertainmentNewsBloc>()
+              .add(NewsEvent.newsLoadStarted());
+          context.read<GeneralNewsBloc>().add(NewsEvent.newsLoadStarted());
+          context.read<HealthNewsBloc>().add(NewsEvent.newsLoadStarted());
+          context.read<ScienceNewsBloc>().add(NewsEvent.newsLoadStarted());
+          context.read<SportsNewsBloc>().add(NewsEvent.newsLoadStarted());
+          context.read<TechnologyNewsBloc>().add(NewsEvent.newsLoadStarted());
+        },
+        child: ListView(
+          children: [
+            const GenericNewsView<MainHeadlineNewsBloc>(
+              maxVisibleArticles: 6,
+              categoryTitle: 'Main news',
+            ),
+            GenericNewsView<BusinessNewsBloc>(
+              maxVisibleArticles: 6,
+              categoryTitle: NewsCategory.business.value,
+            ),
+            GenericNewsView<EntertainmentNewsBloc>(
+              maxVisibleArticles: 6,
+              categoryTitle: NewsCategory.entertainment.value,
+            ),
+            GenericNewsView<GeneralNewsBloc>(
+              maxVisibleArticles: 6,
+              categoryTitle: NewsCategory.general.value,
+            ),
+            GenericNewsView<HealthNewsBloc>(
+              maxVisibleArticles: 6,
+              categoryTitle: NewsCategory.health.value,
+            ),
+            GenericNewsView<ScienceNewsBloc>(
+              maxVisibleArticles: 6,
+              categoryTitle: NewsCategory.science.value,
+            ),
+            GenericNewsView<SportsNewsBloc>(
+              maxVisibleArticles: 6,
+              categoryTitle: NewsCategory.sports.value,
+            ),
+            GenericNewsView<TechnologyNewsBloc>(
+              maxVisibleArticles: 6,
+              categoryTitle: NewsCategory.sports.value,
+            ),
+          ],
+          scrollDirection: Axis.vertical,
+          physics: const AlwaysScrollableScrollPhysics(),
+        ),
       ),
     );
   }
