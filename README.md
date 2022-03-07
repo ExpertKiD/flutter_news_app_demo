@@ -68,6 +68,11 @@ NEWS_API_DOT_ORG_API_KEY=f10e2821bbbea527ea02200352313bc059445190
 4. Run `flutter clean` initially to clean the flutter workspace.
 5. Run `flutter pub get` to get the dependencies.
 6. Finally, you can now run the project using `flutter run`.
+7. To build for ios and android, run the following commands:
+```
+# Android
+suman-pc$: flutter build apk
+```
 
 
 ## 4. Project Modification/Extension Guide
