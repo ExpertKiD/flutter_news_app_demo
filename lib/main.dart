@@ -16,7 +16,7 @@ Future main() async {
     () async {
       await dotenv.load(fileName: '.env');
 
-      final tempDirectory = await getTemporaryDirectory().then((dir) {
+      await getApplicationDocumentsDirectory().then((dir) {
         dio.interceptors.add(DioCacheInterceptor(
           options: CacheOptions(
             store: HiveCacheStore(dir.path),
